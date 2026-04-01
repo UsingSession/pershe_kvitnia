@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline';" />
+  <title>Результат 😂</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+    }
+
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 24px;
+      padding: 40px 50px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .result-text {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #2d3436;
+      line-height: 1.5;
+    }
+
+    .result-text span {
+      color: #e84393;
+    }
+
+    .footer-emoji {
+      font-size: 2rem;
+      letter-spacing: 8px;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="result-text">хаха не навчив, з тебе <span>40 гривень</span> і 10 год тюрми</p>
+    <p class="footer-emoji">🤡 💸 😂 🎉</p>
+
+    <p style="margin-top: 30px; font-size: 0.9rem; color: #636e72;">(Це жарт, звісно! Не сприймайте це серйозно 😄)</p>
+    <p style="margin-top: 10px; font-size: 0.9rem; color: #636e72;">(Якщо ви все ж таки заплатите, то я не несу відповідальності 😅)</p>
+    <p style="margin-top: 10px; font-size: 1rem; color: #636e72; font-weight: bold;">P.S. Напишіть повідомлення що: "Це дійсно працює", чи щось подібне. <br> Не тільки ж вам попадатися</p>
+  </div>
+</body>
+</html>

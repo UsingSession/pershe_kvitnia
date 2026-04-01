@@ -112,6 +112,31 @@
       transform: scale(1.3);
     }
 
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .answer-btn {
+      display: inline-block;
+      padding: 14px 40px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 50px;
+      background: #e84393;
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(232, 67, 147, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .answer-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(232, 67, 147, 0.5);
+    }
+
     .footer-emoji {
       font-size: 2rem;
       letter-spacing: 8px;
@@ -144,8 +169,13 @@
     <p class="april-tag">🎉 1 квітня &mdash; День сміху 🎉</p>
 
     <h1 class="main-text">
-      Ага попався,<br>що <span class="highlight">phishinacademy</span><br>нічого не навчив!
+      Ага попався,<br>що <span class="highlight">phishinacademy</span><br>нічого не навчив?
     </h1>
+
+    <div class="btn-group">
+      <a class="answer-btn" href="result.html">Так</a>
+      <a class="answer-btn" href="result.html">Ні</a>
+    </div>
 
     <div class="gif-wrapper" id="gifWrapper">
       <!-- Images inserted by JS -->
