@@ -7,11 +7,7 @@
   <!-- A/B split: variant is stored in sessionStorage so the same user sees the same version for their whole session -->
   <script>
     (function () {
-      var v = sessionStorage.getItem('ab_variant');
-      if (!v) {
-        v = Math.random() < 0.5 ? 'b' : 'a';
-        sessionStorage.setItem('ab_variant', v);
-      }
+      var v = Math.random() < 0.5 ? 'b' : 'a';
       if (v === 'b') { window.location.replace('index-b.html'); }
     }());
   </script>

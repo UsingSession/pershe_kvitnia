@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://media.giphy.com; style-src 'unsafe-inline'; script-src 'unsafe-inline';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*.giphy.com; style-src 'unsafe-inline'; script-src 'unsafe-inline';" />
   <title>🔞 AGE VERIFICATION REQUIRED</title>
   <style>
     * {
@@ -300,6 +300,22 @@
       letter-spacing: 1px;
     }
   </style>
+  <script>
+    // sexy gif variants
+    const sexyGifs = [
+      "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHlmNmdja2NxbTluZmJoYzYwdHFkemN5ZDczM3k1eno2Y2p1djZ1ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0JM8tieRtsg3hCdq/giphy.gif",
+      "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHJ2ODlkd2plbTk4bHZhcGZ4bzN1OHpxOTZhdXV0MnN5dnp4MXNqcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/50i6YRZxEiqkM/giphy.gif",
+      "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTVoN3RkZjV4dDVpZWU5dGw5cWIzb3BrMWt0aGRxNzV6bzRycDg3OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT8qBmpbUktKzYblvy/giphy.gif",
+      "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbG8xanpwdjh6Yjk5dm1leDVjNWUwejN2d2hkd3AxeGNlY3ZlamR6MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/N9bIe82qdTMNa/giphy.gif",
+      "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGxxZ29rMmlmbWZteThnMHI5b2NnNjBkNXFjeWw4ZGwzcWV4dGhnYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/94oj4dwuJfDKE/giphy.gif",
+    ];
+    document.addEventListener('DOMContentLoaded', function () {
+      const gif = document.getElementById('sexy-gif');
+      const randomGif = sexyGifs[Math.floor(Math.random() * sexyGifs.length)];
+      gif.src = randomGif;
+    });
+
+  </script>
 </head>
 <body>
 
@@ -308,6 +324,14 @@
     <div class="gate-bar">🔞 ACCESS RESTRICTED — ADULT CONTENT WARNING</div>
     <div class="gate-body">
       <div class="gate-icon">🚫😳🔐</div>
+      <div class="gif-frame">
+      <img
+        id="sexy-gif"
+        src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHlmNmdja2NxbTluZmJoYzYwdHFkemN5ZDczM3k1eno2Y2p1djZ1ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0JM8tieRtsg3hCdq/giphy.gif"
+        alt="cat on keyboard gif"
+        loading="lazy"
+      />
+    </div>
       <h1 class="gate-title">18+ Only</h1>
       <p class="gate-sub">
         This page contains <em>HIGHLY EMBARRASSING</em> material.<br>
