@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://media.giphy.com; style-src 'unsafe-inline'; script-src 'unsafe-inline';" />
-  <title>1 квітня 🎉</title>
+  <!-- A/B split: variant is stored in sessionStorage so the same user sees the same version for their whole session -->
+  <script>
+    (function () {
+      var v = Math.random() < 0.5 ? 'b' : 'a';
+      if (v === 'b') { window.location.replace('index-b.html'); }
+    }());
+  </script>
+  <title>⚠️ CRITICAL ERROR — YOUR PC HAS TOO MANY CATS ⚠️</title>
   <style>
     * {
       margin: 0;
@@ -18,236 +25,369 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
-      background-size: 400% 400%;
-      animation: gradientShift 8s ease infinite;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow: hidden;
+      background: #0a0a0a;
+      font-family: 'Courier New', Courier, monospace;
       padding: 20px;
+      overflow-x: hidden;
     }
 
-    @keyframes gradientShift {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* Scanline effect overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0, 255, 0, 0.03) 3px,
+        rgba(0, 255, 0, 0.03) 4px
+      );
+      pointer-events: none;
+      z-index: 100;
     }
 
-    .container {
-      text-align: center;
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 24px;
-      padding: 40px 50px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-      max-width: 700px;
+    .screen {
+      border: 4px solid #ff0000;
+      border-radius: 4px;
+      padding: 32px 36px;
+      max-width: 760px;
       width: 100%;
+      background: #111;
+      box-shadow: 0 0 40px rgba(255, 0, 0, 0.6), 0 0 80px rgba(255, 0, 0, 0.2);
+      animation: borderPulse 1.4s ease-in-out infinite;
       position: relative;
       z-index: 1;
     }
 
-    .april-tag {
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #e84393;
+    @keyframes borderPulse {
+      0%, 100% { box-shadow: 0 0 40px rgba(255, 0, 0, 0.6), 0 0 80px rgba(255, 0, 0, 0.2); }
+      50%       { box-shadow: 0 0 60px rgba(255, 80, 0, 0.9), 0 0 100px rgba(255, 0, 0, 0.4); }
+    }
+
+    /* Title bar */
+    .title-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ff0000;
+      color: #fff;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: -32px -36px 28px -36px;
+      border-radius: 0;
+    }
+
+    .title-bar-dots span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-left: 6px;
+      background: #fff;
+      opacity: 0.7;
+    }
+
+    .error-icon {
+      font-size: 4rem;
+      text-align: center;
+      animation: wobble 0.5s ease-in-out infinite alternate;
       margin-bottom: 12px;
     }
 
-    .main-text {
-      font-size: 1.9rem;
-      font-weight: 800;
-      color: #2d3436;
-      line-height: 1.4;
-      margin-bottom: 30px;
+    @keyframes wobble {
+      from { transform: rotate(-8deg) scale(1); }
+      to   { transform: rotate(8deg) scale(1.15); }
     }
 
-    .main-text span.highlight {
-      color: #e84393;
+    .error-code {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #ff4444;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
     }
 
-    .gif-wrapper {
-      position: relative;
+    .headline {
+      text-align: center;
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: #ff4444;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1.3;
+      margin-bottom: 20px;
+      animation: textFlicker 2.5s linear infinite;
+    }
+
+    @keyframes textFlicker {
+      0%, 95%, 100% { opacity: 1; }
+      96%            { opacity: 0.2; }
+      97%            { opacity: 1; }
+      98%            { opacity: 0.4; }
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px dashed #ff4444;
+      margin: 16px 0;
+      opacity: 0.5;
+    }
+
+    /* Fake diagnosis list */
+    .diagnosis {
+      color: #00ff99;
+      font-size: 0.85rem;
+      line-height: 1.9;
+      margin-bottom: 20px;
+      padding-left: 8px;
+    }
+
+    .diagnosis li {
+      list-style: none;
+    }
+
+    .diagnosis li::before {
+      content: '> ';
+      color: #ff4444;
+    }
+
+    /* Warning box */
+    .warning-box {
+      border: 2px solid #ffd700;
+      background: rgba(255, 215, 0, 0.07);
+      padding: 14px 18px;
+      color: #ffd700;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      border-radius: 2px;
+    }
+
+    .warning-box strong {
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 6px;
+      letter-spacing: 2px;
+    }
+
+    /* GIF */
+    .gif-frame {
       width: 100%;
-      height: 260px;
-      margin-bottom: 30px;
-      border-radius: 16px;
+      max-height: 220px;
       overflow: hidden;
-      background: #f0f0f0;
-    }
-
-    .gif-wrapper img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 16px;
-      opacity: 0;
-      transition: opacity 0.8s ease;
-    }
-
-    .gif-wrapper img.active {
-      opacity: 1;
-    }
-
-    .progress-dots {
+      border: 2px solid #ff4444;
+      margin-bottom: 20px;
+      border-radius: 2px;
+      background: #000;
       display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 8px;
+    }
+
+    .gif-frame img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Progress bar */
+    .progress-label {
+      color: #aaa;
+      font-size: 0.75rem;
+      margin-bottom: 6px;
+      letter-spacing: 2px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 14px;
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 2px;
+      overflow: hidden;
       margin-bottom: 24px;
     }
 
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #ccc;
-      transition: background 0.3s ease, transform 0.3s ease;
-      cursor: pointer;
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ff0000, #ff6600, #ffd700);
+      transition: width 0.4s ease;
     }
 
-    .dot.active {
-      background: #e84393;
-      transform: scale(1.3);
-    }
-
+    /* Buttons */
     .btn-group {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      margin-bottom: 30px;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
-    .answer-btn {
+    .btn {
       display: inline-block;
-      padding: 14px 40px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      border-radius: 50px;
-      background: #e84393;
-      color: #fff;
-      text-decoration: none;
-      box-shadow: 0 6px 20px rgba(232, 67, 147, 0.4);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .answer-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 28px rgba(232, 67, 147, 0.5);
-    }
-
-    .footer-emoji {
-      font-size: 2rem;
-      letter-spacing: 8px;
-    }
-
-    /* Confetti particles */
-    .confetti {
-      position: fixed;
-      top: -10px;
-      width: 10px;
-      height: 14px;
+      padding: 12px 32px;
+      font-size: 1rem;
+      font-weight: bold;
+      font-family: 'Courier New', Courier, monospace;
+      border: 2px solid;
       border-radius: 2px;
-      opacity: 0;
-      animation: confettiFall linear infinite;
-      pointer-events: none;
-      z-index: 0;
+      text-decoration: none;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
     }
 
-    @keyframes confettiFall {
-      0%   { transform: translateY(-20px) rotate(0deg);   opacity: 1; }
-      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    .btn:active { transform: scale(0.96); }
+
+    .btn-danger {
+      background: #ff0000;
+      color: #fff;
+      border-color: #ff0000;
+      box-shadow: 0 0 14px rgba(255, 0, 0, 0.5);
+    }
+
+    .btn-danger:hover {
+      background: #cc0000;
+      box-shadow: 0 0 22px rgba(255, 0, 0, 0.8);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #aaa;
+      border-color: #555;
+    }
+
+    .btn-ghost:hover {
+      color: #fff;
+      border-color: #aaa;
+    }
+
+    /* Extra nonsense panel */
+    #extraNonsense {
+      display: none;
+      color: #00ff99;
+      font-size: 0.8rem;
+      line-height: 2;
+      border-top: 1px dashed #333;
+      padding-top: 14px;
+      margin-top: 4px;
+    }
+
+    #extraNonsense.visible { display: block; }
+
+    .footer-bar {
+      margin-top: 20px;
+      color: #444;
+      font-size: 0.7rem;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .footer-bar a {
+      color: #666;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- Confetti generated by JS -->
+  <div class="screen">
+    <div class="title-bar">
+      <span>⚠ CRITICAL SYSTEM ERROR — CATWARE DETECTED</span>
+      <div class="title-bar-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
 
-  <div class="container">
-    <p class="april-tag">🎉 1 квітня &mdash; День сміху 🎉</p>
+    <div class="error-icon">🐱💻🔥</div>
+    <p class="error-code">ERROR CODE: 0xCAT_OVERFLOW_42069</p>
 
-    <h1 class="main-text">
-      Ага попався,<br>що <span class="highlight">phishedacademy</span><br>нічого не навчив?
-    </h1>
+    <h1 class="headline">YOUR COMPUTER<br>HAS TOO MANY CATS</h1>
+
+    <hr class="divider" />
+
+    <ul class="diagnosis">
+      <li>Detected: 847 invisible cats lounging on your CPU</li>
+      <li>RAM currently used to store 12,000 cat pictures</li>
+      <li>Keyboard fur density: CRITICAL (3.7 cats/cm²)</li>
+      <li>Browser history: 98% cat videos, 2% "how to unsee cats"</li>
+      <li>System clock offset: +3 cat naps (≈ 6 hours)</li>
+      <li>Antivirus bypassed by a very confident tabby</li>
+    </ul>
+
+    <div class="warning-box">
+      <strong>⚠ URGENT INSTRUCTIONS — DO NOT IGNORE ⚠</strong>
+      1. Immediately place a cucumber near your keyboard.<br>
+      2. Do NOT make eye contact with your monitor.<br>
+      3. Call 1-800-NO-CATS and press PAW for English.<br>
+      4. Blow on the cartridge. (This fixes everything.)<br>
+      5. Sacrifice one (1) USB drive to the IT gods.
+    </div>
+
+    <div class="gif-frame">
+      <img
+        src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
+        alt="cat on keyboard gif"
+        loading="lazy"
+      />
+    </div>
+
+    <p class="progress-label" id="progressLabel">UPLOADING YOUR BROWSER HISTORY TO CAT HEADQUARTERS... 0%</p>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
 
     <div class="btn-group">
-      <a class="answer-btn" href="result.html">Так</a>
-      <a class="answer-btn" href="result.html">Ні</a>
+      <a class="btn btn-danger" href="result.html">FIX IT NOW 🚨</a>
+      <button class="btn btn-ghost" id="moreBtn" type="button">SHOW MORE ERRORS</button>
     </div>
 
-    <div class="gif-wrapper" id="gifWrapper">
-      <!-- Images inserted by JS -->
+    <div id="extraNonsense">
+      > SCANNING… found 1 cat inside your webcam<br>
+      > SCANNING… found 3 cats in your Wi-Fi signal<br>
+      > SCANNING… found 0 cats under your bed (they WANT you to think that)<br>
+      > SCANNING… your screensaver is a cat. This is not a screensaver.<br>
+      > SCANNING… estimated time to full cat takeover: 4 minutes<br>
+      > RECOMMENDATION: Have you tried turning it off and on again? (The cat will reset.)<br>
     </div>
 
-    <div class="progress-dots" id="progressDots"></div>
-
-    <p class="footer-emoji">😂 🤡 🎊 🐟 🎉</p>
+    <p class="footer-bar">
+      CatWare™ v6.6.6 &nbsp;|&nbsp; Not a real virus (probably) &nbsp;|&nbsp;
+      <a href="result.html">Click here if you are a cat</a>
+    </p>
   </div>
 
   <script>
-    // GIFs – fun/celebratory, hosted on Giphy (direct media links)
-    const gifs = [
-      'https://media.giphy.com/media/3o7TKwmnDgQb5jemjK/giphy.gif',  // laughing
-      'https://media.giphy.com/media/l3q2K5jinAlChoCLS/giphy.gif',  // got ya / surprise
-      'https://media.giphy.com/media/Ov5NiLVXT8JEc/giphy.gif',      // trollface laugh
-      'https://media.giphy.com/media/Q7ozWVYCR0nyW2rvPW/giphy.gif', // april fools prank
-      'https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif',  // celebration confetti
-    ];
+    // Fake upload progress bar
+    const fill = document.getElementById('progressFill');
+    const label = document.getElementById('progressLabel');
+    let pct = 0;
 
-    const wrapper = document.getElementById('gifWrapper');
-    const dotsContainer = document.getElementById('progressDots');
+    const timer = setInterval(() => {
+      pct += Math.random() * 3 + 0.5;
+      if (pct >= 100) {
+        pct = 100;
+        clearInterval(timer);
+        label.textContent = 'UPLOAD COMPLETE. CATS NOW KNOW EVERYTHING. 🐾';
+      } else {
+        label.textContent = 'UPLOADING YOUR BROWSER HISTORY TO CAT HEADQUARTERS... ' + Math.floor(pct) + '%';
+      }
+      fill.style.width = pct + '%';
+    }, 120);
 
-    let current = 0;
-    const imgEls = [];
-    const dotEls = [];
-
-    // Build img elements
-    gifs.forEach((src, i) => {
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = 'April Fools gif ' + (i + 1);
-      if (i === 0) img.classList.add('active');
-      wrapper.appendChild(img);
-      imgEls.push(img);
-
-      const dot = document.createElement('div');
-      dot.className = 'dot' + (i === 0 ? ' active' : '');
-      dot.addEventListener('click', () => switchTo(i));
-      dotsContainer.appendChild(dot);
-      dotEls.push(dot);
+    // Show more errors button
+    document.getElementById('moreBtn').addEventListener('click', function () {
+      const panel = document.getElementById('extraNonsense');
+      panel.classList.toggle('visible');
+      this.textContent = panel.classList.contains('visible') ? 'HIDE ERRORS (PLEASE)' : 'SHOW MORE ERRORS';
     });
-
-    function switchTo(index) {
-      imgEls[current].classList.remove('active');
-      dotEls[current].classList.remove('active');
-      current = index;
-      imgEls[current].classList.add('active');
-      dotEls[current].classList.add('active');
-    }
-
-    // Auto-rotate every 3 seconds
-    const rotationTimer = setInterval(() => {
-      switchTo((current + 1) % gifs.length);
-    }, 3000);
-
-    // Clean up timer if the page is ever unloaded (e.g., inside an iframe/SPA)
-    window.addEventListener('unload', () => clearInterval(rotationTimer));
-
-    // Confetti
-    const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#54a0ff', '#5f27cd', '#00d2d3'];
-    for (let i = 0; i < 60; i++) {
-      const el = document.createElement('div');
-      el.className = 'confetti';
-      el.style.left = Math.random() * 100 + 'vw';
-      el.style.background = colors[Math.floor(Math.random() * colors.length)];
-      el.style.width = (6 + Math.random() * 8) + 'px';
-      el.style.height = (10 + Math.random() * 10) + 'px';
-      el.style.animationDuration = (3 + Math.random() * 5) + 's';
-      el.style.animationDelay = (Math.random() * 6) + 's';
-      document.body.appendChild(el);
-    }
   </script>
 </body>
 </html>

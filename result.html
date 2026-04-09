@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline';" />
-  <title>Результат 😂</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://media.giphy.com; style-src 'unsafe-inline'; script-src 'unsafe-inline';" />
+  <title>🐾 CAT REMOVAL COMPLETE</title>
   <style>
     * {
       margin: 0;
@@ -15,57 +15,173 @@
     body {
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
-      background-size: 400% 400%;
-      animation: gradientShift 8s ease infinite;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0a0a0a;
+      font-family: 'Courier New', Courier, monospace;
       padding: 20px;
     }
 
-    @keyframes gradientShift {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .container {
-      text-align: center;
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 24px;
-      padding: 40px 50px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    .screen {
+      border: 4px solid #00ff99;
+      border-radius: 4px;
+      padding: 32px 36px;
       max-width: 700px;
       width: 100%;
+      background: #111;
+      box-shadow: 0 0 40px rgba(0, 255, 153, 0.5);
+      text-align: center;
     }
 
-    .result-text {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #2d3436;
-      line-height: 1.5;
+    .title-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #00aa66;
+      color: #fff;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: -32px -36px 28px -36px;
     }
 
-    .result-text span {
-      color: #e84393;
+    .big-check {
+      font-size: 5rem;
+      margin-bottom: 16px;
+      animation: popIn 0.4s ease-out;
     }
 
-    .footer-emoji {
-      font-size: 2rem;
-      letter-spacing: 8px;
+    @keyframes popIn {
+      from { transform: scale(0.3); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+
+    h1 {
+      color: #00ff99;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px dashed #333;
+      margin: 16px 0;
+    }
+
+    .log {
+      text-align: left;
+      color: #00ff99;
+      font-size: 0.8rem;
+      line-height: 2;
+      margin-bottom: 24px;
+    }
+
+    .log span.ok   { color: #00ff99; }
+    .log span.warn { color: #ffd700; }
+
+    .gif-frame {
+      width: 100%;
+      max-height: 200px;
+      overflow: hidden;
+      border: 2px solid #00ff99;
+      margin-bottom: 24px;
+      background: #000;
+    }
+
+    .gif-frame img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .joke-note {
+      color: #555;
+      font-size: 0.75rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .btn-back {
+      display: inline-block;
+      padding: 10px 28px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      font-family: 'Courier New', Courier, monospace;
+      border: 2px solid #00ff99;
+      color: #00ff99;
+      background: transparent;
+      text-decoration: none;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-back:hover {
+      background: #00ff99;
+      color: #000;
+    }
+
+    .footer-bar {
       margin-top: 24px;
+      color: #333;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <p class="result-text">хаха не навчив, з тебе <span>40 гривень</span> і 10 год тюрми</p>
-    <p class="footer-emoji">🤡 💸 😂 🎉</p>
+  <div class="screen">
+    <div class="title-bar">
+      <span>✔ CATWARE REMOVAL TOOL v6.6.6</span>
+      <span>STATUS: SUCCESS</span>
+    </div>
 
-    <p style="margin-top: 30px; font-size: 0.9rem; color: #636e72;">(Це жарт, звісно! Не сприймайте це серйозно 😄)</p>
-    <p style="margin-top: 10px; font-size: 0.9rem; color: #636e72;">(Якщо ви все ж таки заплатите, то я не несу відповідальності 😅)</p>
-    <p style="margin-top: 10px; font-size: 1rem; color: #636e72; font-weight: bold;">P.S. Напишіть повідомлення що: "Це дійсно працює", чи щось подібне. <br> Не тільки ж вам попадатися</p>
+    <div class="big-check">✅🐱</div>
+
+    <h1>Congratulations!</h1>
+    <p class="subtitle">Your computer has been successfully de-catted.</p>
+    <p class="subtitle">(Results may vary. Offer not valid on Tuesdays or near fish tanks.)</p>
+
+    <hr class="divider" />
+
+    <div class="log">
+      <span class="ok">[ OK ]</span> Removed 847 invisible cats from CPU<br>
+      <span class="ok">[ OK ]</span> Reclaimed 11.3 GB of cat picture RAM<br>
+      <span class="ok">[ OK ]</span> Keyboard fur density: 0.0 cats/cm² (down from CRITICAL)<br>
+      <span class="warn">[ WARN ]</span> One (1) very smug cat remains. It will not leave.<br>
+      <span class="ok">[ OK ]</span> System clock re-synced. Lost cat nap time restored.<br>
+      <span class="ok">[ OK ]</span> Antivirus re-enabled. Tabby has been escorted off premises.<br>
+      <span class="warn">[ WARN ]</span> Browser history already at Cat HQ. Nothing to be done.<br>
+    </div>
+
+    <div class="gif-frame">
+      <img
+        src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif"
+        alt="celebration gif"
+        loading="lazy"
+      />
+    </div>
+
+    <p class="joke-note">
+      (This is a joke. Your computer is fine. Probably.)<br>
+      No cats were harmed in the making of this website.<br>
+      The "one smug cat that remains" is your problem now. Good luck. 🐾
+    </p>
+
+    <a class="btn-back" href="index.html">← INFECT AGAIN</a>
+
+    <p class="footer-bar">CatWare™ &nbsp;|&nbsp; 100% parody &nbsp;|&nbsp; Not responsible for actual cats on your keyboard</p>
   </div>
 </body>
 </html>
