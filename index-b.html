@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://media.giphy.com; style-src 'unsafe-inline'; script-src 'unsafe-inline';" />
+  <title>🔞 AGE VERIFICATION REQUIRED</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #0d0005;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 20px;
+    }
+
+    /* ── AGE GATE ── */
+    #ageGate {
+      border: 4px solid #cc0044;
+      max-width: 560px;
+      width: 100%;
+      background: #110008;
+      box-shadow: 0 0 50px rgba(200, 0, 70, 0.55);
+      text-align: center;
+      animation: gatePulse 1.6s ease-in-out infinite;
+    }
+
+    @keyframes gatePulse {
+      0%, 100% { box-shadow: 0 0 50px rgba(200, 0, 70, 0.55); }
+      50%       { box-shadow: 0 0 80px rgba(200, 0, 70, 0.85); }
+    }
+
+    .gate-bar {
+      background: #cc0044;
+      color: #fff;
+      padding: 8px 16px;
+      font-size: 0.82rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-align: left;
+    }
+
+    .gate-body {
+      padding: 36px 32px 28px;
+    }
+
+    .gate-icon {
+      font-size: 4rem;
+      margin-bottom: 10px;
+    }
+
+    .gate-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff2255;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+
+    .gate-sub {
+      color: #aa7788;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .gate-sub em {
+      color: #ff6688;
+      font-style: normal;
+    }
+
+    .gate-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      font-size: 0.95rem;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: 2px solid;
+      cursor: pointer;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .btn:active { transform: scale(0.96); }
+
+    .btn-yes {
+      background: #cc0044;
+      color: #fff;
+      border-color: #cc0044;
+      box-shadow: 0 0 12px rgba(200, 0, 68, 0.4);
+    }
+
+    .btn-yes:hover {
+      background: #ff0055;
+      box-shadow: 0 0 22px rgba(255, 0, 85, 0.7);
+    }
+
+    .btn-no {
+      background: transparent;
+      color: #666;
+      border-color: #444;
+    }
+
+    .btn-no:hover {
+      color: #aaa;
+      border-color: #888;
+    }
+
+    .gate-fine-print {
+      color: #443344;
+      font-size: 0.68rem;
+      line-height: 1.6;
+    }
+
+    /* ── CONTENT (hidden until age confirmed) ── */
+    #content {
+      display: none;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    #content.visible { display: block; }
+
+    .screen {
+      border: 4px solid #ff2255;
+      background: #110008;
+      box-shadow: 0 0 40px rgba(255, 0, 68, 0.4);
+    }
+
+    .screen-bar {
+      background: #cc0044;
+      color: #fff;
+      padding: 7px 14px;
+      font-size: 0.82rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .screen-body {
+      padding: 28px 32px 24px;
+    }
+
+    .reveal-icon {
+      font-size: 3.5rem;
+      text-align: center;
+      margin-bottom: 10px;
+      animation: spin 3s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .reveal-title {
+      text-align: center;
+      font-size: 1.55rem;
+      font-weight: bold;
+      color: #ff2255;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+
+    .reveal-sub {
+      text-align: center;
+      color: #aa7788;
+      font-size: 0.8rem;
+      margin-bottom: 22px;
+      letter-spacing: 1px;
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px dashed #330022;
+      margin: 14px 0;
+    }
+
+    /* Confession cards */
+    .confessions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      border: 1px solid #330022;
+      background: #180010;
+      padding: 14px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .card-text {
+      color: #cc8899;
+      font-size: 0.82rem;
+      line-height: 1.7;
+    }
+
+    .card-text strong {
+      display: block;
+      color: #ff6688;
+      font-size: 0.88rem;
+      margin-bottom: 3px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* GIF */
+    .gif-frame {
+      width: 100%;
+      height: 210px;
+      overflow: hidden;
+      border: 2px solid #cc0044;
+      margin-bottom: 22px;
+      background: #000;
+    }
+
+    .gif-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .shame-meter {
+      margin-bottom: 20px;
+    }
+
+    .shame-label {
+      color: #cc8899;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+    }
+
+    .shame-track {
+      width: 100%;
+      height: 14px;
+      background: #220011;
+      border: 1px solid #440022;
+    }
+
+    .shame-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #cc0044, #ff6699);
+      transition: width 0.5s ease;
+    }
+
+    .btn-back {
+      display: inline-block;
+      padding: 10px 26px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      font-family: 'Courier New', Courier, monospace;
+      border: 2px solid #444;
+      color: #666;
+      background: transparent;
+      text-decoration: none;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .btn-back:hover { color: #aaa; border-color: #aaa; }
+
+    .footer-bar {
+      margin-top: 20px;
+      color: #330022;
+      font-size: 0.68rem;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── AGE GATE ── -->
+  <div id="ageGate">
+    <div class="gate-bar">🔞 ACCESS RESTRICTED — ADULT CONTENT WARNING</div>
+    <div class="gate-body">
+      <div class="gate-icon">🚫😳🔐</div>
+      <h1 class="gate-title">18+ Only</h1>
+      <p class="gate-sub">
+        This page contains <em>HIGHLY EMBARRASSING</em> material.<br>
+        Viewer discretion is strongly advised.<br><br>
+        You are about to witness content so <em>shameful</em>,<br>
+        so <em>deeply cringe</em>, that we legally cannot show it<br>
+        to anyone under 18. Or people with dignity.
+      </p>
+      <div class="gate-buttons">
+        <button class="btn btn-yes" id="yesBtn">Yes, I am 18+</button>
+        <button class="btn btn-no" id="noBtn">No, I have shame</button>
+      </div>
+      <p class="gate-fine-print">
+        By clicking "Yes", you confirm you are of legal age and accept<br>
+        full responsibility for any secondhand embarrassment suffered.<br>
+        We are not liable for cringe-induced injuries.
+      </p>
+    </div>
+  </div>
+
+  <!-- ── REVEALED CONTENT ── -->
+  <div id="content">
+    <div class="screen">
+      <div class="screen-bar">
+        <span>🔞 CLASSIFIED — CHRONICALLY ONLINE CONFESSIONS</span>
+        <span>LEVEL: MAXIMUM CRINGE</span>
+      </div>
+      <div class="screen-body">
+
+        <div class="reveal-icon">🫣</div>
+        <h1 class="reveal-title">You Asked For This</h1>
+        <p class="reveal-sub">CONFESSIONS OF A FULLY GROWN ADULT ON THE INTERNET</p>
+
+        <hr class="divider" />
+
+        <div class="confessions">
+          <div class="card">
+            <div class="card-icon">😭</div>
+            <div class="card-text">
+              <strong>Exhibit A — The 2am Cat Video Spiral</strong>
+              Has cried at a cat video. Not once. Not twice. On a Tuesday at 2am, alone, with the lights off, eating cereal dry because the milk expired. The cat was fine. Did not need to cry. Cried anyway.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon">🗂️</div>
+            <div class="card-text">
+              <strong>Exhibit B — The Tab Hoarder</strong>
+              Currently has 312 open browser tabs. Cannot close them. Each one is "important". Three are the same Wikipedia article opened on different days. One has been open since 2019. Does not know what it is. Afraid to look.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon">🎵</div>
+            <div class="card-text">
+              <strong>Exhibit C — The Secret Playlist</strong>
+              Has a private Spotify playlist titled "DO NOT OPEN" that is exclusively early-2000s pop songs. Listens to it while doing chores. Sings along. Knows every word. Has no regrets. Okay, some regrets.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon">📱</div>
+            <div class="card-text">
+              <strong>Exhibit D — The Laugh-Reactor</strong>
+              Has laughed at their own meme before sending it. Laughed again after sending it. Checked for reactions every 4 minutes. The meme was not that good.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon">🛒</div>
+            <div class="card-text">
+              <strong>Exhibit E — The Midnight Cart</strong>
+              Has added items to an online shopping cart at 1am, stared at them for 40 minutes, then closed the tab and felt both relieved and hollow inside.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon">🐶</div>
+            <div class="card-text">
+              <strong>Exhibit F — The Dog Video Breakdown</strong>
+              Watched a video of a dog being reunited with its owner. Wept openly. Showed it to someone else. Wept again watching them react. It was just a dog. It is always just a dog.
+            </div>
+          </div>
+        </div>
+
+        <div class="gif-frame">
+          <img
+            src="https://media.giphy.com/media/ukMiDpZkBnEqc/giphy.gif"
+            alt="embarrassed gif"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="shame-meter">
+          <p class="shame-label" id="shameLabel">MEASURING YOUR SHAME LEVEL... 0%</p>
+          <div class="shame-track">
+            <div class="shame-fill" id="shameFill"></div>
+          </div>
+        </div>
+
+        <div style="text-align:center;">
+          <a class="btn-back" href="index.html">← I WANT CATS INSTEAD</a>
+        </div>
+
+        <p class="footer-bar">
+          All confessions are fictional. Any resemblance to your own browsing history is your problem, not ours.
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const gate    = document.getElementById('ageGate');
+    const content = document.getElementById('content');
+    const fill    = document.getElementById('shameFill');
+    const label   = document.getElementById('shameLabel');
+
+    document.getElementById('yesBtn').addEventListener('click', function () {
+      gate.style.display = 'none';
+      content.classList.add('visible');
+
+      // Shame meter animation
+      let pct = 0;
+      const timer = setInterval(() => {
+        pct += Math.random() * 4 + 1;
+        if (pct >= 100) {
+          pct = 100;
+          clearInterval(timer);
+          label.textContent = 'SHAME LEVEL: MAXIMUM. WE ARE SO SORRY FOR YOU.';
+        } else {
+          label.textContent = 'MEASURING YOUR SHAME LEVEL... ' + Math.floor(pct) + '%';
+        }
+        fill.style.width = pct + '%';
+      }, 80);
+    });
+
+    document.getElementById('noBtn').addEventListener('click', function () {
+      // Redirect to the "safe" cat error page
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
